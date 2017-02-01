@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"os/exec"
+	"strings"
 )
 
 const script = `
@@ -33,5 +34,5 @@ func GetActivityName() (string, error) {
 	cmd.Stdin = bytes.NewBufferString(script)
 	output, err := cmd.Output()
 
-	return string(output), err
+	return strings.Replace(string(output), "\n", "", -1), err
 }
