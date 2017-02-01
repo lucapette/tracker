@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"time"
 )
 
@@ -13,10 +14,19 @@ type Category struct {
 	Score int
 }
 
+var Communication = Category{Name: "Communication", Score: 0}
+var Development = Category{Name: "Development", Score: 1}
+var Social = Category{Name: "Social", Score: -1}
+var Uncategorized = Category{Name: "Uncategorized", Score: 0}
+
+var categories map[string]Category
+
 type Activity struct {
 	Name string
 	Category
 }
+
+var UnknownActivity = Activity{Name: "Unknown", Category: Uncategorized}
 
 func (a Activity) Store() error {
 	b := bytes.NewBufferString(fmt.Sprintf("activity,category=%s,score=%d value=\"%s\"", a.Category.Name, a.Category.Score, a.Name))
@@ -51,13 +61,27 @@ func (a Activity) Store() error {
 	return nil
 }
 
-func findCategory(name string) Category {
-	return Category{Name: "Stuff", Score: 42}
+func NewActivity(frontApp string) Activity {
+	if category, ok := categories[frontApp]; ok {
+		return Activity{Name: frontApp, Category: category}
+	}
+
+	url, err := url.Parse(frontApp)
+	if err != nil {
+		return UnknownActivity
+	}
+
+	if category, ok := categories[url.Host]; ok {
+		return Activity{Name: url.Host, Category: category}
+	}
+
+	return UnknownActivity
 }
 
-func NewActivity(name string) Activity {
-	return Activity{
-		Name:     name,
-		Category: findCategory(name),
+func init() {
+	categories = map[string]Category{
+		"iTerm2":      Development,
+		"twitter.com": Social,
+		"airmail":     Communication,
 	}
 }
