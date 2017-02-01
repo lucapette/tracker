@@ -80,8 +80,15 @@ func NewActivity(frontApp string) Activity {
 
 func init() {
 	categories = map[string]Category{
-		"iTerm2":      Development,
-		"twitter.com": Social,
-		"airmail":     Communication,
+		"iTerm2":            Development,
+		"github.com":        Development,
+		"stackoverflow.com": Development,
+		"Dash":              Development,
+		"twitter.com":       Social,
+		"reddit.com":        Social,
+		"medium.com":        Social,
+		"linkedin.com":      Social,
+		"airmail":           Communication,
+		"slack.com":         Communication,
 	}
 }
