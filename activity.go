@@ -28,6 +28,8 @@ type Activity struct {
 
 var UnknownActivity = Activity{Name: "Unknown", Category: Uncategorized}
 
+var client *http.Client
+
 func (a Activity) Store() error {
 	b := bytes.NewBufferString(fmt.Sprintf("activity,category=%s,score=%d value=\"%s\"", a.Category.Name, a.Category.Score, a.Name))
 	req, err := http.NewRequest("POST", "http://localhost:8086/write", b)
@@ -41,8 +43,7 @@ func (a Activity) Store() error {
 	params.Set("db", "me")
 	req.URL.RawQuery = params.Encode()
 
-	c := &http.Client{Timeout: 100 * time.Millisecond}
-	resp, err := c.Do(req)
+	resp, err := client.Do(req)
 	if err != nil {
 		return err
 	}
@@ -79,6 +80,7 @@ func NewActivity(frontApp string) Activity {
 }
 
 func init() {
+	client = &http.Client{Timeout: 100 * time.Millisecond}
 	categories = map[string]Category{
 		"iTerm2":            Development,
 		"github.com":        Development,
