@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"regexp"
 	"time"
 )
 
@@ -20,6 +21,8 @@ var Social = Category{Name: "Social", Score: -1}
 var Uncategorized = Category{Name: "Uncategorized", Score: 0}
 
 var categories map[string]Category
+
+var devTLD = regexp.MustCompile(`\.dev$`)
 
 type Activity struct {
 	Name string
@@ -74,6 +77,10 @@ func NewActivity(frontApp string) Activity {
 
 	if category, ok := categories[url.Hostname()]; ok {
 		return Activity{Name: url.Hostname(), Category: category}
+	}
+
+	if devTLD.MatchString(url.Host) {
+		return Activity{Name: url.Hostname(), Category: Development}
 	}
 
 	return UnknownActivity
