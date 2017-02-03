@@ -72,8 +72,8 @@ func NewActivity(frontApp string) Activity {
 		return UnknownActivity
 	}
 
-	if category, ok := categories[url.Host]; ok {
-		return Activity{Name: url.Host, Category: category}
+	if category, ok := categories[url.Hostname()]; ok {
+		return Activity{Name: url.Hostname(), Category: category}
 	}
 
 	return UnknownActivity
@@ -86,6 +86,7 @@ func init() {
 		"github.com":        Development,
 		"stackoverflow.com": Development,
 		"Dash":              Development,
+		"localhost":         Development,
 		"twitter.com":       Social,
 		"reddit.com":        Social,
 		"medium.com":        Social,
