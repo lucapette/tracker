@@ -34,7 +34,7 @@ var UnknownActivity = Activity{Name: "Unknown", Category: Uncategorized}
 var client *http.Client
 
 func (a Activity) Store() error {
-	b := bytes.NewBufferString(fmt.Sprintf("activity,category=%s,score=%d value=\"%s\"", a.Category.Name, a.Category.Score, a.Name))
+	b := bytes.NewBufferString(fmt.Sprintf("activity,category=%s,app=\"%s\" value=1i,score=%di", a.Category.Name, a.Name, a.Category.Score))
 	req, err := http.NewRequest("POST", "http://localhost:8086/write", b)
 	if err != nil {
 		return err
