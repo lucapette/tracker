@@ -29,8 +29,6 @@ type Activity struct {
 	Category
 }
 
-var UnknownActivity = Activity{Name: "Unknown", Category: Uncategorized}
-
 var client *http.Client
 
 func (a Activity) Store() error {
@@ -72,7 +70,7 @@ func NewActivity(frontApp string) Activity {
 
 	url, err := url.Parse(frontApp)
 	if err != nil {
-		return UnknownActivity
+		return Activity{Name: frontApp, Category: Uncategorized}
 	}
 
 	if category, ok := categories[url.Hostname()]; ok {
@@ -83,7 +81,7 @@ func NewActivity(frontApp string) Activity {
 		return Activity{Name: url.Hostname(), Category: Development}
 	}
 
-	return UnknownActivity
+	return Activity{Name: frontApp, Category: Uncategorized}
 }
 
 func init() {
