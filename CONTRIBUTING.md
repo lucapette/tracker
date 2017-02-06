@@ -5,7 +5,7 @@ agree to abide to the our [code of conduct](/CODE_OF_CONDUCT.md).
 
 ## Setup your machine
 
-`t` is written in [Go](https://golang.org/).
+`tracker` is written in [Go](https://golang.org/).
 
 Prerequisites are:
 
@@ -13,10 +13,10 @@ Prerequisites are:
   * `make`
   * [Go 1.8+](http://golang.org/doc/install) (of course! :))
 
-Clone `t` from source:
+Clone `tracker` from source:
 
 ```sh
-$ git clone https://github.com/lucapette/t.git
+$ git clone https://github.com/lucapette/tracker.git
 $ cd t
 ```
 
@@ -51,5 +51,5 @@ Which runs all the linters and tests.
 
 ## Submit a pull request
 
-Push your branch to your `t` fork and open a pull request against
+Push your branch to your `tracker` fork and open a pull request against
 the master branch.

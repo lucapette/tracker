@@ -38,7 +38,7 @@ func (a Activity) Store() error {
 		return err
 	}
 	req.Header.Set("Content-Type", "")
-	req.Header.Set("User-Agent", "lucapette/t")
+	req.Header.Set("User-Agent", "lucapette/tracker")
 
 	params := req.URL.Query()
 	params.Set("db", "me")

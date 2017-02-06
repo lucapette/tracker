@@ -1,11 +1,13 @@
-# t
+# tracker
 
 My personal activity tracker. It uses awesome open source technology:
 
-- [Influxdb](https://github.com/influxdata/influxdb)
+- [Go](https://golang.org)
 - [Grafana](https://github.com/grafana/grafana)
+- [Influxdb](https://github.com/influxdata/influxdb)
 
-Please *note* it only works on mac osx and it's largely untested.
+Please *note* it only works on mac osx and it's largely untested as I wrote it
+for myself.
 
 # Overview
 
@@ -13,17 +15,17 @@ Please *note* it only works on mac osx and it's largely untested.
 
 ## Homebrew
 
-`t` can be installed through Homebrew:
+`tracker` can be installed through Homebrew:
 
 ``` sh
 $ brew tap lucapette/tap
-$ brew install t
+$ brew install tracker
 ```
 
 ## Standalone
 
-`t` can be easily installed as an executable. Download the latest
-[compiled binaries](https://github.com/lucapette/t/releases) and put it
+`tracker` can be installed as an executable. Download the latest
+[compiled binaries](https://github.com/lucapette/tracker/releases) and put it
 anywhere in your executable path.
 
 ## Source

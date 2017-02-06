@@ -1,4 +1,4 @@
-SOURCE_FILES?=$$(go list ./... | grep -v '/t/vendor/')
+SOURCE_FILES?=$$(go list ./... | grep -v '/tracker/vendor/')
 TEST_PATTERN?=.
 TEST_OPTIONS?=
 
