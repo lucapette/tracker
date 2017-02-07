@@ -3,6 +3,7 @@ TEST_PATTERN?=.
 TEST_OPTIONS?=
 
 setup: ## Install all the build and lint dependencies
+	go get -u github.com/jteeuwen/go-bindata/...
 	go get -u github.com/kisielk/errcheck
 
 test: ## Run all the tests
@@ -14,8 +15,12 @@ lint: ## Run all the linters
 
 ci: lint test ## Run all the tests and code checks
 
-build:
+assets: ## Embed static assets
+	go-bindata -o static.go categories.csv
+
+build: assets ## Build a dev version of tracker
 	go build
+	gofmt -w static.go
 
 # Absolutely awesome: http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 help:

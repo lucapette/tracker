@@ -1,29 +1,56 @@
 package main
 
+import (
+	"log"
+	"strings"
+)
+
 type Category struct {
 	Name  string
 	Score int
 }
 
-var Communication = Category{Name: "Communication", Score: 0}
-var Development = Category{Name: "Development", Score: 1}
-var Social = Category{Name: "Social", Score: -1}
-var Uncategorized = Category{Name: "Uncategorized", Score: 0}
+var Categories map[string]Category
 
-var categories map[string]Category
+func registerCategory(name string, score int) Category {
+	category := Category{
+		Name:  name,
+		Score: score,
+	}
+
+	Categories[name] = category
+
+	return category
+}
+
+var Activities map[string]Activity
 
 func init() {
-	categories = map[string]Category{
-		"iTerm2":            Development,
-		"github.com":        Development,
-		"stackoverflow.com": Development,
-		"Dash":              Development,
-		"localhost":         Development,
-		"twitter.com":       Social,
-		"reddit.com":        Social,
-		"medium.com":        Social,
-		"linkedin.com":      Social,
-		"airmail":           Communication,
-		"slack.com":         Communication,
+	Categories = make(map[string]Category, 6)
+	registerCategory("Development", 1)
+	registerCategory("General", 1)
+
+	registerCategory("Communication", 0)
+	registerCategory("Uncategorized", 0)
+
+	registerCategory("Social", -1)
+	registerCategory("Entertainment", -1)
+
+	asset, err := Asset("categories.csv")
+	if err != nil {
+		log.Panic(err)
+	}
+
+	lines := strings.Split(string(asset), "\n")
+	lines = lines[0 : len(lines)-1] // this is ugly
+
+	Activities = make(map[string]Activity, len(lines)-1)
+	for _, line := range lines {
+		cols := strings.Split(line, ",")
+
+		frontApp := cols[0]
+		category := Categories[cols[1]]
+
+		Activities[frontApp] = Activity{Name: frontApp, Category: category}
 	}
 }

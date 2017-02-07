@@ -6,11 +6,8 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"regexp"
 	"time"
 )
-
-var devTLD = regexp.MustCompile(`\.dev$`)
 
 type Activity struct {
 	Name string
@@ -20,7 +17,9 @@ type Activity struct {
 var client *http.Client
 
 func (a Activity) Store() error {
-	b := bytes.NewBufferString(fmt.Sprintf("activity,category=%s,app=\"%s\" value=1i,score=%di", a.Category.Name, a.Name, a.Category.Score))
+	measurement := fmt.Sprintf("activity,category=%s,app=\"%s\" value=1i,score=%di", a.Category.Name, a.Name, a.Category.Score)
+
+	b := bytes.NewBufferString(measurement)
 	req, err := http.NewRequest("POST", "http://localhost:8086/write", b)
 	if err != nil {
 		return err
@@ -52,24 +51,20 @@ func (a Activity) Store() error {
 }
 
 func NewActivity(frontApp string) Activity {
-	if category, ok := categories[frontApp]; ok {
-		return Activity{Name: frontApp, Category: category}
+	if activity, ok := Activities[frontApp]; ok {
+		return activity
 	}
 
 	url, err := url.Parse(frontApp)
 	if err != nil {
-		return Activity{Name: frontApp, Category: Uncategorized}
+		return Activity{Name: frontApp, Category: Categories["Uncategorized"]}
 	}
 
-	if category, ok := categories[url.Hostname()]; ok {
-		return Activity{Name: url.Hostname(), Category: category}
+	if activity, ok := Activities[url.Hostname()]; ok {
+		return activity
 	}
 
-	if devTLD.MatchString(url.Host) {
-		return Activity{Name: url.Hostname(), Category: Development}
-	}
-
-	return Activity{Name: frontApp, Category: Uncategorized}
+	return Activity{Name: frontApp, Category: Categories["Uncategorized"]}
 }
 
 func init() {
