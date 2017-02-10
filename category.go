@@ -43,11 +43,13 @@ func init() {
 	}
 
 	lines := strings.Split(string(asset), "\n")
-	lines = lines[0 : len(lines)-1] // this is ugly
 
 	Activities = make(map[string]Activity, len(lines)-1)
 	for _, line := range lines {
 		cols := strings.Split(line, ",")
+		if len(cols[0]) == 0 {
+			continue
+		}
 
 		frontApp := cols[0]
 		category := Categories[cols[1]]
