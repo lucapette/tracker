@@ -19,6 +19,8 @@ has the following limitations:
 - It has *no* configuration so it assumes db name and credentials for
   InfluxDB.
 - It has no logging.
+- The default set of [categories](/categories.csv) is too small.
+- There is no way to override default categories.
 
 # Installation guide
 
