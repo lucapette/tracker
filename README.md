@@ -6,7 +6,7 @@ My personal activity tracker. It uses awesome open source technology:
 
 - [Go](https://golang.org)
 - [Grafana](https://github.com/grafana/grafana)
-- [Influxdb](https://github.com/influxdata/influxdb)
+- [InfluxDB](https://github.com/influxdata/influxdb)
 
 # Current status of the project
 
@@ -17,7 +17,7 @@ has the following limitations:
 - It works only on mac.
 - It tracks only Google Chrome activity.
 - It has *no* configuration so it assumes db name and credentials for
-  influxdb.
+  InfluxDB.
 - It has no logging.
 
 # Installation guide
