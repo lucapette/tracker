@@ -22,6 +22,9 @@ has the following limitations:
 - The default set of [categories](/categories.csv) is too small.
 - There is no way to override default categories.
 
+Please have a look at the
+[roadmap](https://github.com/lucapette/tracker/projects/1) for more details.
+
 # Installation guide
 
 ## Standalone
