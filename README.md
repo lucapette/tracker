@@ -9,7 +9,14 @@ My personal activity tracker. It uses awesome open source technology:
 # Current status of the project
 
 I wrote `tracker` to play around with InfluxDB and Grafana. I open sourced it
-so I could write on my blog about the experience.
+so I could write on my blog about the experience. At the moment, the project
+has the following limitations:
+
+- It works only on mac.
+- It tracks only Google Chrome activity.
+- It has *no* configuration so it assumes db name and credentials for
+  influxdb.
+- It has no logging.
 
 # Installation guide
 
