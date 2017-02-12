@@ -6,44 +6,23 @@ My personal activity tracker. It uses awesome open source technology:
 - [Grafana](https://github.com/grafana/grafana)
 - [Influxdb](https://github.com/influxdata/influxdb)
 
-Please *note* it only works on mac osx and it's largely untested as I wrote it
-for myself.
+# Current status of the project
 
-# Overview
+I wrote `tracker` to play around with InfluxDB and Grafana. I open sourced it
+so I could write on my blog about the experience.
 
 # Installation guide
 
-## Homebrew
-
-`tracker` can be installed through Homebrew:
-
-``` sh
-$ brew tap lucapette/tap
-$ brew install tracker
-```
-
 ## Standalone
 
-`tracker` can be installed as an executable. Download the latest
-[compiled binaries](https://github.com/lucapette/tracker/releases) and put it
-anywhere in your executable path.
+`tracker` can be installed as an executable. Download the latest [compiled
+binaries](https://github.com/lucapette/tracker/releases) and put it anywhere
+in your executable path.
 
 ## Source
 
 Please refer to our [contributing guidelines](/CONTRIBUTING.md) to build and
-install `deluminator` from the source.
-
-# How to contribute
-
-Please refer to our [contributing guidelines](/CONTRIBUTING.md) and to our
-[developer manual](/docs/developer-manual.md).
-
-# FAQ
-
-## Are you adding feature X?
-
-I would love the project to grown and work for more people but I won't be able
-to maintain it alone. I welcome your contribution to it.
+install `tracker` from the source.
 
 # Code of Conduct
 
