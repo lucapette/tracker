@@ -2,7 +2,7 @@
 
 ![screenshot](docs/screenshot.png)
 
-My personal activity tracker. It uses awesome open source technology:
+`tracker` uses awesome open source technology:
 
 - [Go](https://golang.org)
 - [Grafana](https://github.com/grafana/grafana)
