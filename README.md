@@ -26,11 +26,14 @@ Please have a look at the [docs](docs/development.md) for more details.
 
 # Installation guide
 
-## Standalone
+At the moment the process is still very manual:
 
-`tracker` can be installed as an executable. Download the latest [compiled
-binaries](https://github.com/lucapette/tracker/releases) and put it anywhere
-in your executable path.
+- Install the binary from the repository
+- Have InfluxDB running on default configuration locally
+- Have Grafana talking to your local InfluxDB instance.
+
+The latest version of the dashboard is available
+[here](/docs/Me-1487506103645.json).
 
 ## Source
 
