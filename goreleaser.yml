@@ -5,3 +5,5 @@ build:
   goarch:
     - 386
     - amd64
+brew:
+  repo: lucapette/homebrew-tap
