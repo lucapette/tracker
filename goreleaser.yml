@@ -1,0 +1,7 @@
+build:
+  main: 'cmd/tracker.go'
+  goos:
+    - darwin
+  goarch:
+    - 386
+    - amd64
