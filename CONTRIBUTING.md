@@ -17,7 +17,7 @@ Clone `tracker` from source:
 
 ```sh
 $ git clone https://github.com/lucapette/tracker.git
-$ cd t
+$ cd tracker
 ```
 
 Install the build and lint dependencies:
