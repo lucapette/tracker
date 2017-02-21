@@ -28,17 +28,35 @@ Please have a look at the [docs](docs/development.md) for more details.
 
 At the moment the process is still very manual:
 
-- Install the binary from the repository
+- Install the binary with your preferred system (brew, releases, source code)
 - Have InfluxDB running on default configuration locally
 - Have Grafana talking to your local InfluxDB instance.
 
-The latest version of the dashboard is available
-[here](/docs/Me-1487506103645.json).
+## Homebrew
+
+`tracker` can be installed through Homebrew:
+
+``` sh
+$ brew tap lucapette/tap
+$ brew install tracker
+$ brew services start lucapette/tap/tracker
+```
+
+## Standalone
+
+`tracker` can be installed as an executable. Download the latest [compiled
+binaries](https://github.com/lucapette/tracker/releases) and put it anywhere
+in your executable path.
 
 ## Source
 
 Please refer to our [contributing guidelines](/CONTRIBUTING.md) to build and
 install `tracker` from the source.
+
+## Grafana dashboard
+
+The latest version of the dashboard is available
+[here](/docs/Me-1487506103645.json).
 
 # Code of Conduct
 

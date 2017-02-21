@@ -3,7 +3,7 @@
 // categories.csv
 // DO NOT EDIT!
 
-package main
+package tracker
 
 import (
 	"bytes"

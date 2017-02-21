@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/lucapette/tracker"
 	"log"
 	"os"
 	"os/signal"
@@ -11,12 +12,12 @@ func main() {
 	go func() {
 		tick := time.Tick(1 * time.Second)
 		for range tick {
-			name, err := GetActivityName()
+			name, err := tracker.GetActivityName()
 			if err != nil {
 				log.Println(err)
 			}
 
-			a := NewActivity(name)
+			a := tracker.NewActivity(name)
 
 			err = a.Store()
 			if err != nil {

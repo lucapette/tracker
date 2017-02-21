@@ -16,10 +16,10 @@ lint: ## Run all the linters
 ci: lint test ## Run all the tests and code checks
 
 assets: ## Embed static assets
-	go-bindata -o static.go categories.csv
+	go-bindata -pkg tracker -o static.go categories.csv
 
 build: assets ## Build a dev version of tracker
-	go build
+	go build cmd/tracker.go
 	gofmt -w static.go
 
 # Absolutely awesome: http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
