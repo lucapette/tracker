@@ -6,7 +6,7 @@ build:
     - 386
     - amd64
 brew:
-  github: 
+  github:
     owner: lucapette
     name: homebrew-tap
   plist: |

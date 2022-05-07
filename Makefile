@@ -2,25 +2,16 @@ SOURCE_FILES?=$$(go list ./... | grep -v '/tracker/vendor/')
 TEST_PATTERN?=.
 TEST_OPTIONS?=
 
-setup: ## Install all the build and lint dependencies
-	go get -u github.com/jteeuwen/go-bindata/...
-	go get -u github.com/kisielk/errcheck
-
 test: ## Run all the tests
 	go test $(TEST_OPTIONS) -cover $(SOURCE_FILES) -run $(TEST_PATTERN) -timeout=30s
 
 lint: ## Run all the linters
-	go vet $(SOURCE_FILES)
-	errcheck $(SOURCE_FILES)
+	golangci-lint run
 
 ci: lint test ## Run all the tests and code checks
 
-assets: ## Embed static assets
-	go-bindata -pkg tracker -o static.go categories.csv
-
-build: assets ## Build a dev version of tracker
+build: ## Build a dev version of tracker
 	go build cmd/tracker.go
-	gofmt -w static.go
 
 # Absolutely awesome: http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 help:

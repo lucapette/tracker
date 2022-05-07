@@ -6,7 +6,7 @@
 [here](https://github.com/lucapette/tracker/projects/1).
 
 `tracker` is a personal little project so the goal of this document is to
-explain what I intend to work on on my own to improve the sofware and what I
+explain what I intend to work on on my own to improve the software and what I
 won't be able to develop without support.
 
 ### Current

@@ -1,11 +1,13 @@
 package main
 
 import (
-	"github.com/lucapette/tracker"
 	"log"
 	"os"
 	"os/signal"
+	"syscall"
 	"time"
+
+	"github.com/lucapette/tracker"
 )
 
 func main() {
@@ -27,6 +29,6 @@ func main() {
 	}()
 
 	s := make(chan os.Signal, 1)
-	signal.Notify(s, os.Interrupt, os.Kill)
+	signal.Notify(s, os.Interrupt, syscall.SIGTERM)
 	<-s
 }

@@ -51,20 +51,20 @@ func (a Activity) Store() error {
 }
 
 func NewActivity(frontApp string) Activity {
-	if activity, ok := Activities[frontApp]; ok {
+	if activity, ok := activities[frontApp]; ok {
 		return activity
 	}
 
 	url, err := url.Parse(frontApp)
 	if err != nil {
-		return Activity{Name: frontApp, Category: Categories["Uncategorized"]}
+		return Activity{Name: frontApp, Category: categories["Uncategorized"]}
 	}
 
-	if activity, ok := Activities[url.Hostname()]; ok {
+	if activity, ok := activities[url.Hostname()]; ok {
 		return activity
 	}
 
-	return Activity{Name: frontApp, Category: Categories["Uncategorized"]}
+	return Activity{Name: frontApp, Category: categories["Uncategorized"]}
 }
 
 func init() {
