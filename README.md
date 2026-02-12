@@ -1,5 +1,7 @@
 # tracker
 
+> **Archived**: This repository has been moved to [code/tracker](https://github.com/lucapette/code/tree/main/tracker)
+
 ![screenshot](docs/screenshot.png)
 
 `tracker` uses awesome open source technology:
